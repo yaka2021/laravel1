@@ -18,6 +18,9 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AdminMovieController;
 
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('URL', [Controllerの名前::class, 'Controller内のfunction名']);
 Route::get('/practice', [PracticeController::class, 'sample']);
@@ -26,4 +29,6 @@ Route::get('/practice3', [PracticeController::class, 'sample3']);
 Route::get('/getPractice', [PracticeController::class, 'getPractice']);
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/admin/movies', [AdminMovieController::class, 'index']);
+Route::get('/admin/movies/create', [AdminMovieController::class, 'create']);
+Route::post('/admin/movies/store', [AdminMovieController::class, 'store']);
 
