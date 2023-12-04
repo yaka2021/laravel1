@@ -20,6 +20,7 @@
         <tr><th>映画タイトル</th><td><input type="text" name="title"></td></tr>
 		<tr><th>画像URL</th><td><input type="text" name="image_url"></td></tr>
 		<tr><th>公開年</th><td><input type="text" name="published_year"></td></tr>
+        <input type="hidden" name="is_showing" value="0">
 		<tr><th>公開中かどうか</th><td><label><input type="checkbox" name="is_showing" value="1">公開中ならチェックをいれてください</label></td></tr>
 		<tr><th>概要</th><td><textarea name="description"></textarea></td></tr>
         <tr><td><input type="submit" value="登録"></td></tr>

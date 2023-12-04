@@ -7,6 +7,14 @@
     <title>Practice</title>
 </head>
 <body>
+
+<script>
+    function confirm_test() {
+    var select = confirm("本当に削除しますか？");
+    return select;
+    }
+</script>
+
     <table>
     @if (session('flash_message'))
         <div class="flash_message">
@@ -24,8 +32,14 @@
             <td>{{$movie->description}}</td>
             <td>{{$movie->created_at}}</td>
             <td>{{$movie->updated_at}}</td>
-            <td><a href="/admin/movies/{{$movie->id}}/edit/">編集</a></td>
-        </tr>
+            <td><input type="button" value="編集" onclick="location.href='/admin/movies/{{$movie->id}}/edit'"></td>
+            <td>
+            <form method="POST" action="/admin/movies/{{$movie->id}}/destroy"  onsubmit="confirm_test()">
+            @csrf <!-- CSRF対策-->
+            @method('DELETE')
+            <input type="submit" value="削除" />
+            </form>
+            </td>
     @endforeach
     </table>
 </body>

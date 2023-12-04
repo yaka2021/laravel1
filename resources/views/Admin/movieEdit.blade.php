@@ -21,7 +21,8 @@
         <tr><th>映画タイトル</th><td><input type="text" name="title" value="{{$movie->title}}"></td></tr>
 		<tr><th>画像URL</th><td><input type="text" name="image_url" value="{{$movie->image_url}}"></td></tr>
 		<tr><th>公開年</th><td><input type="text" name="published_year" value="{{$movie->published_year}}"></td></tr>
-		<tr><th>公開中かどうか</th><td><label><input type="checkbox" name="is_showing" value="1" checked>公開中ならチェックをいれてください</label></td></tr>
+        <input type="hidden" name="is_showing" value="0">
+		<tr><th>公開中かどうか</th><td><label><input type="checkbox" name="is_showing" value="1" checked>{{$movie->is_showing?"公開中ならチェックをいれたままにしてください":"公開予定のままならチェックを外してください"}}</label></td></tr>
 		<tr><th>概要</th><td><textarea name="description">{{$movie->description}}</textarea></td></tr>
         <tr><td><input type="submit" value="更新"></td></tr>
     </table>

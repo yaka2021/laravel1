@@ -39,7 +39,7 @@ class AdminMovieController extends Controller
     }
     public function edit($id)
     {
-        $movie = Movie::where('id',$id)->first();
+        $movie = Movie::find($id);
         if (empty($movie)){abort("404");}
         return view("/Admin/movieEdit",compact('movie'));
     }
@@ -53,7 +53,7 @@ class AdminMovieController extends Controller
             'is_showing' => 'required|boolean',
         ]);
 
-        $movie = Movie::where('id',$id)->first();
+        $movie = Movie::find($id);
         if (empty($movie)){abort("404");}
         $movie->title = request('title');
         $movie->image_url = request('image_url');
@@ -63,5 +63,13 @@ class AdminMovieController extends Controller
         $movie->save();
 
         return redirect('/admin/movies')->with('flash_message', '更新が完了しました');
+    }
+
+    public function destroy($id){
+        $movie = Movie::find($id);
+        if (empty($movie)){abort("404");}
+        $movie->delete();
+
+        return redirect('/admin/movies')->with('flash_message', '削除が完了しました');
     }
 }
